@@ -7,6 +7,7 @@ const dbDica = [];
 // pegar uma dica aleatória
 app.get('/tips', (_, res) => {
 	const tip = dbDica[Math.floor(Math.random() * dbDica.length)];
+	if (!tip) return res.status(404).send('Nenhuma dica encontrada.');
 	res.send(tip);
 });
 
